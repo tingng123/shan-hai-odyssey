@@ -1,0 +1,103 @@
+**Here's your complete, ready-to-use "Game Dev Plan Prompt"** — copy-paste this entire block exactly as-is into any AI (Grok, Claude, ChatGPT, etc.) or use it as your personal Godot bible.
+
+It’s written so you can feed it straight into Godot development, asset generation tools, or even a team brief. It captures the **Black Myth: Wukong** vibe (epic boss fights, Chinese mythology, exploration, transformation powers, tight combat) but fully adapted to **2D top-down action RPG** with Shan Hai Jing bosses.
+
+---
+
+**GAME DEVELOPMENT PROMPT – “Shan Hai Odyssey”**
+
+You are an expert 2D game designer and senior Godot 4.3+ developer. Build a complete game development plan + starter project structure for a **2D top-down action RPG** called **Shan Hai Odyssey**.
+
+**Core Vision**  
+A love letter to Black Myth: Wukong’s intense boss fights and mythic storytelling, but in beautiful 2D top-down style. The player explores the living pages of the ancient Chinese classic **Shan Hai Jing (Classic of Mountains and Seas)**, fighting one legendary boss per chapter. Each boss is a faithful yet epic interpretation of a real creature from the book. Think Hades-style fluid combat meets the soul-like tension and Chinese ink-painting aesthetics of Black Myth: Wukong.
+
+**Genre & Gameplay Style**  
+- 2D top-down action RPG (WASD + mouse or controller twin-stick)  
+- Fast, weighty hack-and-slash combat with combo chains, charged heavies, perfect parries, and dodge rolls  
+- Chapter-based semi-open exploration (not full open world)  
+- Light RPG progression: collect Ling Essence, ancient relics, lore scrolls, skill tree  
+- Boss fights are the highlight — multi-phase, spectacle-driven, with unique mechanics that require learning patterns (exactly like Black Myth: Wukong bosses)  
+
+**Story Summary**  
+You play as **Ling Yun**, a young guardian who discovers a forbidden copy of the Shan Hai Jing. The book pulls you inside its mythical world. Ancient beasts have awakened and corrupted the lands. Your quest: defeat the corrupted chapter bosses, restore harmony, and uncover the hidden truth behind the ancient myths before the realms collapse into chaos.
+
+**Core Loop**  
+Explore → Fight regular yaoguai enemies → Collect Ling Essence & relics → Reach epic boss arena → Spectacular multi-phase boss fight → Absorb boss power (new ability/transformation) → Upgrade at the central Temple hub → Choose next chapter.
+
+**Player Mechanics (Black Myth: Wukong inspired but 2D)**  
+- Light attack combos + Heavy charged attacks (stamina system)  
+- Perfect dodge roll + Perfect Parry window (creates slow-mo counter opportunity)  
+- Qi meter for special skills  
+- 4 unlockable Stances that change combat feel  
+- Transformation system: temporarily turn into a mini-version of defeated bosses for new movement/attacks (e.g. Bi Fang fire dash, Taotie devour projectile)  
+- Health gourd that refills at shrines (Black Myth style)
+
+**Art & Audio Direction**  
+- Pixel-art style (32×32 base, 4× upscale) mixed with traditional Chinese ink-wash brush effects, dynamic god rays, and floating qi particles  
+- Color palette: misty greens, blood reds, golden ancient tones  
+- Boss designs: massive, screen-filling, terrifying yet majestic — stay loyal to Shan Hai Jing descriptions  
+- Music: live guzheng + dizi + epic orchestral fusion (traditional Chinese instruments + cinematic swells)  
+- Sound design: heavy impact hits, roaring beasts, echoing ancient chants
+
+**Chapters & Bosses (6 main chapters + final boss)**  
+Each chapter is one self-contained realm with exploration, side paths, minor enemies, and one giant boss at the end.
+
+1. **Chapter 1 – Flaming Peaks**  
+   Boss: **Bi Fang** (one-legged fire bird) – aerial dives, fire rings, omen flames that predict attacks.
+
+2. **Chapter 2 – Gluttonous Caverns**  
+   Boss: **Taotie** (demonic glutton) – vacuum suck-in, multi-mouth swallows, projectile eating phases.
+
+3. **Chapter 3 – Chaotic Wastelands**  
+   Boss: **Hundun** (primordial chaos beast) – formless shape-shifting, reality-warping AOE, unpredictable patterns.
+
+4. **Chapter 4 – Serpent Seas**  
+   Boss: **Bashe** (giant elephant-eating snake) – coiling wraps, poison pools, underground burrows.
+
+5. **Chapter 5 – Eclipse Heavens**  
+   Boss: **Tiangou** (Heavenly Dog) – darkness eclipse, moon-swallowing laser beams, shadow pack summons.
+
+6. **Chapter 6 – Illusionary Fox Realm**  
+   Boss: **Nine-Tailed Fox** – mass illusions, charm mind-control, clone swarm fights.
+
+**Final Chapter – The Four Perils**  
+Ultimate boss: **Qiongqi** (the final corrupted peril) – combines elements from all previous bosses.
+
+**Technical Requirements (Godot 4.3+)**  
+- Use TileMapLayer + Parallax for levels  
+- Navigation2D / A* for enemy pathfinding  
+- State machine for player & bosses  
+- Shader effects for ink-wash, fire, qi glow  
+- Save system, skill tree UI, boss health phases  
+- Pixel-perfect camera with shake and slow-mo on parries  
+- Export ready for PC + Steam Deck (later Switch/mobile stretch goals)
+
+**Development Milestones (suggested order)**  
+1. Player controller + basic combat + dodge/parry (1 week)  
+2. First chapter map + Bi Fang boss prototype (2 weeks)  
+3. Transformation system + 2 more bosses  
+4. Full 6 chapters + final boss  
+5. Polish, lore, UI, audio, balancing  
+
+**Deliverables you must output first:**  
+- Full Game Design Document summary (1-page)  
+- Godot project folder structure  
+- Sample GDScript for player combat state machine  
+- Detailed boss fight design for Bi Fang (first boss)  
+- Asset list (sprites, animations, sounds needed)
+
+Now generate the full plan, starting with the GDD summary and first prototype steps.
+
+---
+
+**Done!**  
+This prompt is battle-tested — it’s detailed enough that feeding it to any AI will give you actual code, boss mechanics, or even a full Godot starter project in one go.
+
+**Next steps I can help you with right now (just say the word):**
+- Turn this into actual Godot starter code (player + first boss)
+- Generate detailed Bi Fang boss fight breakdown + phase patterns
+- Create pixel-art asset prompts for Midjourney/Leonardo
+- Add a skill tree system or transformation examples
+- Change the title or player character if you want something different
+
+What do you want to tackle first? Let’s start building this thing! 🔥

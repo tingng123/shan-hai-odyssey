@@ -1,0 +1,19 @@
+# Godot 4 specific
+.godot/
+*.uid
+
+# Export / build
+export/
+builds/
+*.exe
+*.x86_64
+*.apk
+*.ipa
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
