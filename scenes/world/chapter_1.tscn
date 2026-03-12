@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://chapter1_scene"]
+
+[ext_resource type="Script" path="res://scripts/world/chapter_1.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/bi_fang.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(16, 200)
+
+[node name="Chapter1" type="Node2D"]
+script = ExtResource("1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(200, 360)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BossArena" type="Node2D" parent="."]
+position = Vector2(900, 360)
+
+[node name="BiFang" parent="BossArena" instance=ExtResource("3")]
+position = Vector2(0, 0)
+
+[node name="ArenaGate" type="StaticBody2D" parent="BossArena"]
+position = Vector2(-320, 0)
+process_mode = 4
+
+[node name="GateShape" type="CollisionShape2D" parent="BossArena/ArenaGate"]
+shape = SubResource("2")
+
+[node name="BossTrigger" type="Area2D" parent="."]
+position = Vector2(600, 360)
+
+[node name="BossTriggerShape" type="CollisionShape2D" parent="BossTrigger"]
+shape = SubResource("1")
+
+[node name="HUD" parent="." instance=ExtResource("4")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="InteractPrompt" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Press E to interact"
+horizontal_alignment = 1
+
+[node name="LockedPrompt" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.95
+text = "Chapter locked — defeat previous boss first"
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="BossTrigger" to="." method="_on_boss_trigger_entered"]

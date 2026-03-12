@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bifang_scene"]
+
+[ext_resource type="Script" path="res://scripts/bosses/bi_fang.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/fire_projectile.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/omen_flame.tscn" id="3"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 28.0
+height = 56.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 32.0
+
+[node name="BiFang" type="CharacterBody2D"]
+script = ExtResource("1")
+fire_projectile_scene = ExtResource("2")
+omen_flame_scene = ExtResource("3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="Hitbox" type="Area2D" parent="."]
+monitoring = false
+collision_layer = 8
+collision_mask = 0
+groups=["enemy_hitbox"]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("2")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("1")
