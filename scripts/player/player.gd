@@ -56,7 +56,7 @@ signal parry_triggered                  # emit to slow time externally
 signal died
 
 # ─── Node refs (assign in scene) ─────────────────────────────────────────────
-@onready var anim       : AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim       : Sprite2D = $AnimatedSprite2D
 @onready var hitbox     : Area2D           = $Hitbox
 @onready var hurtbox    : Area2D           = $Hurtbox
 @onready var parry_area : Area2D           = $ParryArea
@@ -187,7 +187,7 @@ func _start_light_attack() -> void:
 		combo_timer  = COMBO_TIMEOUT
 		attack_timer = 0.25
 		_set_state(State.ATTACK_LIGHT)
-		anim.play("attack_light_%d" % combo_step)
+		# anim.play("attack_light_%d" % combo_step)
 		_activate_hitbox(0.25)
 
 func _handle_light_attack_active(_delta: float) -> void:
@@ -196,14 +196,14 @@ func _handle_light_attack_active(_delta: float) -> void:
 # ─── Heavy attack ────────────────────────────────────────────────────────────
 func _handle_heavy_charge(_delta: float) -> void:
 	velocity = Vector2.ZERO
-	anim.play("attack_heavy_charge")
+	# anim.play("attack_heavy_charge")
 
 func _release_heavy() -> void:
 	stamina -= HEAVY_COST
 	emit_signal("stamina_changed", stamina)
 	attack_timer = 0.45
 	_set_state(State.ATTACK_HEAVY)
-	anim.play("attack_heavy_release")
+	# anim.play("attack_heavy_release")
 	_activate_hitbox(0.45)
 
 func _handle_heavy_active(_delta: float) -> void:
@@ -221,7 +221,7 @@ func _start_dodge() -> void:
 		dir = Vector2.from_angle(rotation)   # dodge forward if no input
 	velocity = dir.normalized() * DODGE_SPEED
 	_set_state(State.DODGE)
-	anim.play("dodge")
+	# anim.play("dodge")
 
 func _handle_dodge_active(_delta: float) -> void:
 	pass   # velocity set on entry, decays naturally via move_and_slide
@@ -231,7 +231,7 @@ func _start_parry() -> void:
 	parry_timer = PARRY_WINDOW
 	is_invincible = false
 	_set_state(State.PARRY)
-	anim.play("parry")
+	# anim.play("parry")
 	parry_area.monitoring = true
 
 func _handle_parry_active(_delta: float) -> void:
@@ -243,7 +243,7 @@ func trigger_parry_success() -> void:
 	parry_timer = 0.3   # brief freeze
 	is_invincible = true
 	_set_state(State.PARRY_SUCCESS)
-	anim.play("parry_success")
+	# anim.play("parry_success")
 	emit_signal("parry_triggered")   # let GameManager apply slow-mo
 
 # ─── Damage ──────────────────────────────────────────────────────────────────
@@ -264,7 +264,7 @@ func take_damage(amount: int) -> void:
 	else:
 		hurt_timer = 0.3
 		_set_state(State.HURT)
-		anim.play("hurt")
+		# anim.play("hurt")
 
 func _on_hurtbox_hit(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox"):
@@ -273,7 +273,7 @@ func _on_hurtbox_hit(area: Area2D) -> void:
 # ─── Death ───────────────────────────────────────────────────────────────────
 func _die() -> void:
 	_set_state(State.DEAD)
-	anim.play("death")
+	# anim.play("death")
 	set_physics_process(false)
 	emit_signal("died")
 

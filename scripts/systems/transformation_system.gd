@@ -65,7 +65,7 @@ func try_transform(boss_id: String) -> bool:
 
 	var cfg : Dictionary = TRANSFORMS[boss_id]
 	_player.MOVE_SPEED = cfg["move_speed"]   # override speed
-	_player.anim.play(cfg["anim_prefix"] + "idle")
+	# _player.anim.play(cfg["anim_prefix"] + "idle")
 	emit_signal("transformation_started", boss_id)
 	return true
 
@@ -79,7 +79,7 @@ func end_transformation() -> void:
 
 	if _player:
 		_player.MOVE_SPEED = 160.0   # restore default
-		_player.anim.play("idle")
+		# _player.anim.play("idle")
 	emit_signal("transformation_ended", prev)
 
 func use_special() -> void:

@@ -19,7 +19,7 @@ signal health_changed(current: int, maximum: int)
 signal phase_changed(new_phase: Phase)
 signal died(boss_id: String)
 
-@onready var anim         : AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim         : Sprite2D = $AnimatedSprite2D
 @onready var hitbox       : Area2D           = $Hitbox
 @onready var hurtbox      : Area2D           = $Hurtbox
 
@@ -73,7 +73,7 @@ func _transition_to(new_phase: Phase) -> void:
 	phase = new_phase
 	state = State.TRANSITION
 	emit_signal("phase_changed", phase)
-	anim.play("phase_transition")
+	# anim.play("phase_transition")
 	await get_tree().create_timer(2.0).timeout
 	state = State.ATTACK
 	_on_phase_started(phase)
@@ -84,7 +84,7 @@ func _on_phase_started(_new_phase: Phase) -> void:
 # ─── Death ───────────────────────────────────────────────────────────────────
 func _die() -> void:
 	state = State.DEAD
-	anim.play("death")
+	# anim.play("death")
 	emit_signal("died", boss_id)
 	GameManager.register_boss_defeat(boss_id)
 	await get_tree().create_timer(3.0).timeout

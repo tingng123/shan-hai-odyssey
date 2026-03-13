@@ -16,7 +16,7 @@ var state  : State = State.IDLE
 
 signal died(enemy: BaseEnemy)
 
-@onready var anim    : AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim    : Sprite2D = $AnimatedSprite2D
 @onready var hitbox  : Area2D           = $Hitbox
 @onready var nav     : NavigationAgent2D = $NavigationAgent2D
 
@@ -69,13 +69,13 @@ func take_damage(amount: int) -> void:
 		_die()
 	else:
 		state = State.HURT
-		anim.play("hurt")
+		# anim.play("hurt")
 		await get_tree().create_timer(0.3).timeout
 		state = State.CHASE
 
 func _die() -> void:
 	state = State.DEAD
-	anim.play("death")
+	# anim.play("death")
 	emit_signal("died", self)
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

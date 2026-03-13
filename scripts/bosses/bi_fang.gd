@@ -81,13 +81,13 @@ func _on_phase_started(new_phase: Phase) -> void:
 	pattern_idx = 0
 	match new_phase:
 		Phase.TWO:
-			anim.play("phase2_transition")
+			# anim.play("phase2_transition")
 		Phase.THREE:
-			anim.play("enrage")
+			# anim.play("enrage")
 
 # ─── Intro ───────────────────────────────────────────────────────────────────
 func _play_intro() -> void:
-	anim.play("intro")
+	# anim.play("intro")
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(2.5).timeout
 	state = State.ATTACK
@@ -108,7 +108,7 @@ func _current_pattern() -> Array[Callable]:
 func _attack_dive() -> void:
 	if not player:
 		return
-	anim.play("dive_windup")
+	# anim.play("dive_windup")
 	windup_timer = DIVE_WINDUP
 	# Aim slightly ahead of player
 	var target := player.global_position + player.velocity * 0.3
@@ -116,7 +116,7 @@ func _attack_dive() -> void:
 	await get_tree().create_timer(DIVE_WINDUP).timeout
 
 	is_diving = true
-	anim.play("dive")
+	# anim.play("dive")
 	hitbox.monitoring = true
 
 	# End dive after crossing arena or hitting wall
@@ -125,11 +125,11 @@ func _attack_dive() -> void:
 	hitbox.monitoring = false
 	velocity = Vector2.ZERO
 	attack_cooldown = _cooldown()
-	anim.play("idle")
+	# anim.play("idle")
 
 # ─── Attack: Fire Ring ───────────────────────────────────────────────────────
 func _attack_fire_ring() -> void:
-	anim.play("fire_ring")
+	# anim.play("fire_ring")
 	for i in FIRE_RING_COUNT:
 		var angle  := (TAU / FIRE_RING_COUNT) * i
 		var bullet := fire_projectile_scene.instantiate()
@@ -144,7 +144,7 @@ func _attack_fire_ring() -> void:
 func _attack_omen_flames() -> void:
 	if not player:
 		return
-	anim.play("omen_cast")
+	# anim.play("omen_cast")
 	for i in OMEN_FLAME_COUNT:
 		var offset := Vector2(randf_range(-80, 80), randf_range(-80, 80))
 		var flame  := omen_flame_scene.instantiate()
@@ -154,7 +154,7 @@ func _attack_omen_flames() -> void:
 
 # ─── Attack: Fire Storm (Phase 3 enrage) ─────────────────────────────────────
 func _attack_fire_storm() -> void:
-	anim.play("fire_storm")
+	# anim.play("fire_storm")
 	# Rapid-fire 3 rings with slight rotation offset
 	for wave in 3:
 		await get_tree().create_timer(0.3).timeout
