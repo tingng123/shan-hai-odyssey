@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://hub_scene"]
+[gd_scene load_steps=7 format=3 uid="uid://hub_scene"]
 
 [ext_resource type="Script" path="res://scripts/world/hub.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="3"]
 [ext_resource type="Script" path="res://scripts/world/merchant.gd" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/ui/skill_tree_ui.tscn" id="5"]
+[ext_resource type="Script" path="res://scripts/world/chapter_door.gd" id="6"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 32.0
@@ -37,7 +38,10 @@ shape = SubResource("1")
 
 [node name="Door_Ch1" type="StaticBody2D" parent="ChapterDoors" groups=["chapter_door"]]
 position = Vector2(900, 200)
+script = ExtResource("6")
 metadata/chapter_id = 1
+collision_layer = 1
+collision_mask = 2
 
 [node name="DoorShape1" type="CollisionShape2D" parent="ChapterDoors/Door_Ch1"]
 shape = SubResource("2")
@@ -47,9 +51,21 @@ position = Vector2(-40, -40)
 text = "Chapter 1\nFlaming Peaks"
 horizontal_alignment = 1
 
+[node name="Prompt" type="Label" parent="ChapterDoors/Door_Ch1"]
+visible = false
+position = Vector2(-32, -60)
+text = "E — Enter"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ChapterDoors/Door_Ch1" to="ChapterDoors/Door_Ch1" method="_on_body_entered"]
+[connection signal="body_exited" from="ChapterDoors/Door_Ch1" to="ChapterDoors/Door_Ch1" method="_on_body_exited"]
+
 [node name="Door_Ch2" type="StaticBody2D" parent="ChapterDoors" groups=["chapter_door"]]
 position = Vector2(900, 320)
+script = ExtResource("6")
 metadata/chapter_id = 2
+collision_layer = 1
+collision_mask = 2
 
 [node name="DoorShape2" type="CollisionShape2D" parent="ChapterDoors/Door_Ch2"]
 shape = SubResource("2")
@@ -58,6 +74,15 @@ shape = SubResource("2")
 position = Vector2(-40, -40)
 text = "Chapter 2\nGluttonous Caverns"
 horizontal_alignment = 1
+
+[node name="Prompt" type="Label" parent="ChapterDoors/Door_Ch2"]
+visible = false
+position = Vector2(-32, -60)
+text = "E — Enter"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="ChapterDoors/Door_Ch2" to="ChapterDoors/Door_Ch2" method="_on_body_entered"]
+[connection signal="body_exited" from="ChapterDoors/Door_Ch2" to="ChapterDoors/Door_Ch2" method="_on_body_exited"]
 
 [node name="HUD" parent="." instance=ExtResource("3")]
 
