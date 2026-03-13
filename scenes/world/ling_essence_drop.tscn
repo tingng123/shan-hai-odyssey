@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ling_essence_drop_scene"]
+
+[ext_resource type="Script" path="res://scripts/world/ling_essence_drop.gd" id="1"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 6.0
+
+[node name="LingEssenceDrop" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollectShape" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("1")

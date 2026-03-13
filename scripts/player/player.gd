@@ -146,6 +146,8 @@ func _face_mouse() -> void:
 # ─── Combat input ────────────────────────────────────────────────────────────
 func _handle_combat_input() -> void:
 	# Quick-use item (Tab cycles hotbar, F uses selected)
+	if Input.is_action_just_pressed("hotbar_cycle"):
+		Inventory.hotbar_cycle()
 	if Input.is_action_just_pressed("item_use"):
 		Inventory.use(Inventory.hotbar_selected())
 
