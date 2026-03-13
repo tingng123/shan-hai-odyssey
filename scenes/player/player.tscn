@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://player_scene"]
+[gd_scene load_steps=6 format=3 uid="uid://player_scene"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/camera_controller.gd" id="3"]
 [ext_resource type="Texture2D" path="res://assets/sprites/player/player_placeholder.png" id="2"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
@@ -46,7 +47,7 @@ position = Vector2(0, 0)
 shape = SubResource("2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("res://scripts/world/camera_controller.gd")
+script = ExtResource("3")
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
