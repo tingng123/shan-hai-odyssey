@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://yaoguai_scene"]
+[gd_scene load_steps=6 format=3 uid="uid://yaoguai_scene"]
 
 [ext_resource type="Script" path="res://scripts/enemies/yaoguai.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world/ling_essence_drop.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/yaoguai_placeholder.png" id="3"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 7.0
@@ -17,7 +18,8 @@ essence_value = 3
 collision_layer = 2
 collision_mask = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3")
 position = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bifang_scene"]
+[gd_scene load_steps=6 format=3 uid="uid://bifang_scene"]
 
 [ext_resource type="Script" path="res://scripts/bosses/bi_fang.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/bosses/fire_projectile.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/bosses/omen_flame.tscn" id="3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/bosses/bi_fang_placeholder.png" id="4"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 28.0
@@ -16,7 +17,8 @@ script = ExtResource("1")
 fire_projectile_scene = ExtResource("2")
 omen_flame_scene = ExtResource("3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4")
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

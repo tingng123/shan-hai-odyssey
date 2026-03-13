@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://hub_scene"]
+[gd_scene load_steps=10 format=3 uid="uid://hub_scene"]
 
 [ext_resource type="Script" path="res://scripts/world/hub.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="3"]
 [ext_resource type="Script" path="res://scripts/world/merchant.gd" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/ui/skill_tree_ui.tscn" id="5"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/shrine_placeholder.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/merchant_placeholder.png" id="8"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/door_placeholder.png" id="9"]
 [ext_resource type="Script" path="res://scripts/world/chapter_door.gd" id="6"]
 
 [sub_resource type="CircleShape2D" id="1"]
@@ -28,6 +31,7 @@ position = Vector2(320, 360)
 position = Vector2(640, 300)
 
 [node name="ShrineSprite" type="Sprite2D" parent="Shrine"]
+texture = ExtResource("7")
 
 [node name="InteractArea" type="Area2D" parent="Shrine"]
 
@@ -42,6 +46,9 @@ script = ExtResource("6")
 metadata/chapter_id = 1
 collision_layer = 1
 collision_mask = 2
+
+[node name="DoorSprite1" type="Sprite2D" parent="ChapterDoors/Door_Ch1"]
+texture = ExtResource("9")
 
 [node name="DoorShape1" type="CollisionShape2D" parent="ChapterDoors/Door_Ch1"]
 shape = SubResource("2")
@@ -66,6 +73,9 @@ script = ExtResource("6")
 metadata/chapter_id = 2
 collision_layer = 1
 collision_mask = 2
+
+[node name="DoorSprite2" type="Sprite2D" parent="ChapterDoors/Door_Ch2"]
+texture = ExtResource("9")
 
 [node name="DoorShape2" type="CollisionShape2D" parent="ChapterDoors/Door_Ch2"]
 shape = SubResource("2")
@@ -119,6 +129,7 @@ collision_mask = 2
 shape = SubResource("3")
 
 [node name="MerchantSprite" type="Sprite2D" parent="Merchant"]
+texture = ExtResource("8")
 
 [node name="Prompt" type="Label" parent="Merchant"]
 visible = false
