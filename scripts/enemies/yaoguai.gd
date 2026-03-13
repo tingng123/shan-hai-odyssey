@@ -37,7 +37,7 @@ func _lunge() -> void:
 		return
 	is_lunging = true
 	attack_cd  = ATTACK_COOLDOWN
-	anim.play("attack")
+	# anim.play("attack")
 	hitbox.monitoring = true
 
 	var dir := (player.global_position - global_position).normalized()
