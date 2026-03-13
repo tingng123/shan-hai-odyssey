@@ -1,0 +1,124 @@
+[gd_scene load_steps=2 format=3 uid="uid://inventory_ui_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1")
+layer = 10
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="HBox" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="BagPanel" type="VBoxContainer" parent="Panel/VBox/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BagLabel" type="Label" parent="Panel/VBox/HBox/BagPanel"]
+layout_mode = 2
+text = "Bag"
+
+[node name="BagGrid" type="GridContainer" parent="Panel/VBox/HBox/BagPanel"]
+layout_mode = 2
+columns = 6
+
+[node name="EquipPanel" type="VBoxContainer" parent="Panel/VBox/HBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(160, 0)
+
+[node name="EquipLabel" type="Label" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+text = "Equipment"
+
+[node name="WeaponSlot" type="PanelContainer" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+
+[node name="Icon" type="TextureRect" parent="Panel/VBox/HBox/EquipPanel/WeaponSlot"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WeaponLabel" type="Label" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+text = "Weapon"
+
+[node name="BodySlot" type="PanelContainer" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+
+[node name="Icon" type="TextureRect" parent="Panel/VBox/HBox/EquipPanel/BodySlot"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BodyLabel" type="Label" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+text = "Body"
+
+[node name="AccSlot" type="PanelContainer" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(48, 48)
+
+[node name="Icon" type="TextureRect" parent="Panel/VBox/HBox/EquipPanel/AccSlot"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AccLabel" type="Label" parent="Panel/VBox/HBox/EquipPanel"]
+layout_mode = 2
+text = "Accessory"
+
+[node name="GoldRow" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="GoldIcon" type="Label" parent="Panel/VBox/GoldRow"]
+layout_mode = 2
+text = "G"
+
+[node name="GoldLabel" type="Label" parent="Panel/VBox/GoldRow"]
+layout_mode = 2
+text = "Gold: 0"
+
+[node name="Tooltip" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_bottom = 0.0
+text = ""
+autowrap_mode = 2
+
+[node name="Hotbar" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_bottom = 0.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hotbar"]
+layout_mode = 2
+alignment = 1

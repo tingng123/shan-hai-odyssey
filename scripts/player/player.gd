@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # ─── Constants ───────────────────────────────────────────────────────────────
-const MOVE_SPEED        := 160.0
+var   MOVE_SPEED        := 160.0   # var — equipment bonuses can modify
 const DODGE_SPEED       := 380.0
 const DODGE_DURATION    := 0.22
 const DODGE_COOLDOWN    := 0.6
@@ -12,7 +12,7 @@ const MAX_STAMINA       := 100.0
 const STAMINA_REGEN     := 20.0   # per second
 const DODGE_COST        := 25.0
 const HEAVY_COST        := 30.0
-const MAX_QI            := 100.0
+var   MAX_QI            := 100.0  # var — equipment bonuses can modify
 const QI_REGEN          := 5.0    # per second
 
 # ─── State Enum ──────────────────────────────────────────────────────────────
@@ -145,6 +145,10 @@ func _face_mouse() -> void:
 
 # ─── Combat input ────────────────────────────────────────────────────────────
 func _handle_combat_input() -> void:
+	# Quick-use item (Tab cycles hotbar, F uses selected)
+	if Input.is_action_just_pressed("item_use"):
+		Inventory.use(Inventory.hotbar_selected())
+
 	# Dodge
 	if Input.is_action_just_pressed("dodge") and dodge_cd == 0.0 and stamina >= DODGE_COST:
 		_start_dodge()
@@ -247,7 +251,10 @@ func take_damage(amount: int) -> void:
 	if state == State.PARRY:
 		trigger_parry_success()
 		return
-	health -= amount
+	# Subtract defense from equipped armor (minimum 1 damage)
+	var defense := EquipmentManager.get_defense() if Engine.has_singleton("EquipmentManager") else 0
+	var final_dmg := max(amount - defense, 1)
+	health -= final_dmg
 	health = max(health, 0)
 	emit_signal("health_changed", health)
 	if health == 0:
@@ -270,6 +277,9 @@ func _die() -> void:
 
 # ─── Hitbox helper ───────────────────────────────────────────────────────────
 func _activate_hitbox(duration: float) -> void:
+	# Stamp current weapon damage onto hitbox so enemies read it
+	var dmg := EquipmentManager.get_attack_damage() if Engine.has_singleton("EquipmentManager") else 10
+	hitbox.set_meta("damage", dmg)
 	hitbox.monitoring = true
 	await get_tree().create_timer(duration * 0.5).timeout
 	hitbox.monitoring = false

@@ -13,6 +13,10 @@ var data : Dictionary = {
 	"collected_relics": [],
 	"skills_unlocked": [],
 	"playtime":        0.0,
+	"gold":            0,
+	"inventory":       [],
+	"equipment":       { "weapon": "", "body": "", "accessory": "" },
+	"hotbar":          ["potion_small", "", "", ""],
 }
 
 func save() -> void:
