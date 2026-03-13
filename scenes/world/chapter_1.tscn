@@ -36,9 +36,13 @@ shape = SubResource("2")
 
 [node name="BossTrigger" type="Area2D" parent="."]
 position = Vector2(600, 360)
+collision_layer = 0
+collision_mask = 2
 
 [node name="BossTriggerShape" type="CollisionShape2D" parent="BossTrigger"]
 shape = SubResource("1")
+
+[connection signal="body_entered" from="BossTrigger" to="." method="_on_boss_trigger_entered"]
 
 [node name="HUD" parent="." instance=ExtResource("4")]
 

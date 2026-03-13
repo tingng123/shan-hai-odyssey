@@ -4,8 +4,7 @@ extends Node2D
 # Central hub between chapters: skill tree, chapter select, save shrine
 
 @onready var player          : CharacterBody2D  = $Player
-@onready var skill_tree_ui   : Control          = $SkillTreeUI
-@onready var chapter_select  : Control          = $ChapterSelectUI
+@onready var skill_tree_ui   : CanvasLayer      = $SkillTreeUI
 @onready var shrine_interact : Area2D           = $Shrine/InteractArea
 @onready var chapter_doors   : Array[Node]      = []
 @onready var music_player    : AudioStreamPlayer = $MusicPlayer
@@ -15,7 +14,6 @@ func _ready() -> void:
 	player.died.connect(_on_player_died)
 
 	skill_tree_ui.hide()
-	chapter_select.hide()
 
 	shrine_interact.area_entered.connect(_on_shrine_entered)
 	shrine_interact.area_exited.connect(_on_shrine_exited)
@@ -47,7 +45,6 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_just_pressed("ui_cancel"):
 		skill_tree_ui.hide()
-		chapter_select.hide()
 
 func _open_skill_tree() -> void:
 	SaveSystem.save()
